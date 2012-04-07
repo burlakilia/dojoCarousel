@@ -3,9 +3,15 @@ Dojo Carusel widget. This widget implements the dijit/_Container.
 
 # Example
 * Css
+Installation
+-----------
+
+    gem install github-markup
+
     <style>
         @import url('./dojogp/widgets/resources/Carousel.css');
     </style>
+
 * Javascript
     <script type="text/javascript">
     require(["dojo/ready",
