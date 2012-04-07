@@ -3,12 +3,12 @@ Dojo Carusel widget. This widget implements the dijit/_Container.
 
 # Example
 * Css
-	<style>
-		@import url('./dojogp/widgets/resources/Carousel.css');
-	</style>
+    <style>
+        @import url('./dojogp/widgets/resources/Carousel.css');
+    </style>
 * Javascript
- <script type="text/javascript">
-	require(["dojo/ready",
+    <script type="text/javascript">
+    require(["dojo/ready",
 		             'dojo/parser', 
 		             "dojogp/views/applicant/search/ShortVacancySummary",
 		             "dojogp/widgets/Carousel",
