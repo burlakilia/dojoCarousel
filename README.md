@@ -3,10 +3,12 @@ Dojo Carusel widget. This widget implements the dijit/_Container.
 
 # Example
 * Css
-Installation
------------
 
-    gem install github-markup
+    markup(:markdown, /md|mkdn?|markdown/) do |content|
+      Markdown.new(content).to_html
+    end
+
+
 
     <style>
         @import url('./dojogp/widgets/resources/Carousel.css');
