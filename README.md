@@ -1,8 +1,12 @@
-GitHub Markup
+Dojo Carousel Widget
 =============
+Mixin: 
+-------------
+	
+	dijit/_WidgetBase
+	dijit/_TepmateMixi	
+	dijit/_Container
 
-
-Example:
 
 CSS :
 -------------
@@ -44,6 +48,8 @@ Javascript :
 		});
  	</script>
 
-Here we're telling GitHub Markup of the existence of a `rest2html`
-command which should be used for any file ending in `rest`,
-`rst`, `rest.txt` or `rst.txt`. Any regular expression will do.
+ 
+Html :
+------------
+	
+	<div id="carousel"></div>
