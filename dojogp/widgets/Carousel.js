@@ -78,6 +78,11 @@ define(["dojo/_base/declare",
                     } else {
                         this.hideArrow();
                     }
+                    
+                    // если виджеты влезают в одну страницу
+                    if (this.getChildren().length <= this.pageSize) {
+                        this.hideArrow();
+                    }
                 }
                 
                 // присоединям событие прокртуи колесика мышки
@@ -130,6 +135,10 @@ define(["dojo/_base/declare",
                     var end = innerDeckSize - this._deckSize;
                     this._rightEnd = end * -1;
                 }
+
+                if (this.getChildren().length > this.pageSize) {
+                    this.showArrow();
+                }
             },
             
             removeChild: function() {
@@ -143,6 +152,10 @@ define(["dojo/_base/declare",
                     // рассчитываем правую границу прокрутки 
                     var end = innerDeckSize - this._deckSize;
                     this._rightEnd = end * -1;
+                }
+
+                if (this.getChildren().length <= this.pageSize) {
+                    this.hideArrow();
                 }
             },
             

@@ -33,7 +33,10 @@ var testData = {
 			"phones" : [ 
 				"79037907407"
 			],
-			"tags" : [ "рога", "копыта" ]
+			"tags" : [ "рога", "копыта" ],
+                        "resources": {
+                            "smallLogo": "/dojogp/nologo.png"
+                        }
 		},
 		"name": "Программист SQL", // ПОЛЕ "НАЗВАНИЕ ПОЗИЦИИ"
 		"validUntil": "2012-01-01",

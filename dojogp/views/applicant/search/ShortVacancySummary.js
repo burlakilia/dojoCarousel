@@ -32,6 +32,12 @@ define(["dojo/_base/declare",
                         salary += " до " + model.vacancy.maxSalary.amount + " " + model.vacancy.maxSalary.currency.shortName;
                     }
                     
+                    
+                    if (model.vacancy.company != undefined &&  model.vacancy.company.resources != undefined && 
+                            model.vacancy.company.resources.smallLogo != undefined) {
+                        this.logo.src = model.vacancy.company.resources.smallLogo;
+                    }
+                    
                     this.salary.innerHTML = salary;
                     
                 } else {
