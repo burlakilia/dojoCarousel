@@ -1,11 +1,10 @@
 define(["dojo/_base/declare",
-        "dijit/_WidgetBase",
-        "dijit/_TemplatedMixin",
         "dojogp/mvc/_View",
-        "dojo/text!./templates/ShortVacancySummary.html"], 
-    function (declare, _WidgetBase, _Templated, _View, Template) {
+        "dojo/text!./templates/ShortVacancySummary.html",
+        "dojo/hash"], 
+    function (declare, _View, Template, hash) {
 
-        var Widget = declare("dojogp.views.applicant.search.ShortVacancySummary", [_WidgetBase, _Templated, _View], {
+        var Widget = declare("dojogp.views.applicant.search.ShortVacancySummary", [_View], {
             
             model: null, 
             
@@ -47,7 +46,13 @@ define(["dojo/_base/declare",
             
             _click: function() {
                 if (this.model != undefined && this.model.vacancy._id != undefined) {
-                    window.location = "#search/vacancy/" + this.model.vacancy._id;
+                                 
+                    var obj = new Array();
+                    obj.push("search");
+                    obj.push("vacancy");
+                    obj.push(this.model.vacancy._id);
+                    
+                    hash(obj.join("/"));
                 }
                 
             }
