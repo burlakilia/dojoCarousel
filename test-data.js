@@ -35,7 +35,7 @@ var testData = {
 			],
 			"tags" : [ "рога", "копыта" ],
                         "resources": {
-                            "smallLogo": "/dojogp/nologo.png"
+                            "smallLogo": "/dojoCarusel/nologo.png"
                         }
 		},
 		"name": "Программист SQL", // ПОЛЕ "НАЗВАНИЕ ПОЗИЦИИ"
