@@ -11,8 +11,8 @@ and open the template in the editor.
                 isDebug: true,
                 
                 packages: [{
-                    name: "dojogp",
-                    location: '/dojoCarousel/dojogp'  // rewrite this path ([/your_sub_directory]/dojogp)
+                    name: "bil",
+                    location: '/dojoCarousel/bil/'  // rewrite this path ([/your_sub_directory]/dojogp)
                 }],
             
                 parseOnLoad: true
@@ -24,11 +24,10 @@ and open the template in the editor.
             var carousel;
             
             require(["dojo/ready",
-                     'dojo/parser', 
-                     "dojogp/views/applicant/search/ShortVacancySummary",
-                     "dojogp/widgets/Carousel",
+                     'dojo/parser',
+                     "bil/widgets/Carousel",
                      "dijit/form/Button",
-                     "dijit/layout/ContentPane"], function(ready, parser, ShortVacancySummary, Carousel, Button, ContentPane) {
+                     "dijit/layout/ContentPane"], function(ready, parser, Carousel, Button, ContentPane) {
                      
                     
                      
@@ -40,12 +39,12 @@ and open the template in the editor.
                             scrollStep: 20, // скорость прокрутки колесиком
                             animationSpeed: 1000, // скорость анимации прокрутки страницы стрелками
                             children: [
-                                new ShortVacancySummary({ model: testData }),
-                                new ShortVacancySummary({ model: testData }),
-                                new ShortVacancySummary({ model: testData }),
-                                new ShortVacancySummary({ model: testData }),
-                                new ShortVacancySummary({ model: testData }),
-                                new ShortVacancySummary({ model: testData }),
+                                new ContentPane({style:"background-color:white", content:'<h5>Привет мир</h5>'}),
+                                new ContentPane({style:"background-color:white", content:'<h5>Привет мир</h5>'}),
+                                new ContentPane({style:"background-color:white", content:'<h5>Привет мир</h5>'}),
+                                new ContentPane({style:"background-color:white", content:'<h5>Привет мир</h5>'}),
+                                new ContentPane({style:"background-color:white", content:'<h5>Привет мир</h5>'}),
+                                new ContentPane({style:"background-color:white", content:'<h5>Привет мир</h5>'}),
                                 new ContentPane({style:"background-color:white", content:'<h5>Привет мир</h5>'})
                             ]
                         }, "carousel");
@@ -53,7 +52,7 @@ and open the template in the editor.
                         carousel.startup();
                         
                         // проверка методов dijit/_Container
-                        var testWidget = new ShortVacancySummary({ model: testData });
+                        var testWidget = new ContentPane({style:"background-color:white", content:'<h5>Привет мир</h5>'});
                         carousel.addChild(testWidget);
                         carousel.removeChild(5);
                         
@@ -66,8 +65,7 @@ and open the template in the editor.
         </script>
         
         <style>
-            @import url('./dojogp/views/applicant/search/resources/ShortVacancySummary.css');
-            @import url('./dojogp/widgets/resources/Carousel.css');
+            @import url('bil/widgets/resources/Carousel.css');
         </style>
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -75,11 +73,5 @@ and open the template in the editor.
     <body>
         <h4>Carousel</h4>
         <div id="carousel"></div>
-        
-        <h4>ShortVacancySummary</h4>
-        <div data-dojo-type="dojogp.views.applicant.search.ShortVacancySummary" 
-             data-dojo-props="model: testData"></div>
-        
-        
     </body>
 </html>
