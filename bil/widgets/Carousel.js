@@ -14,7 +14,7 @@ define(["dojo/_base/declare",
          * Виджет карусели, данный виджет отображает все виджеты в виде карусли, 
          * которые были указаны в поле children
          */
-        var Carousel = declare("dojogp.widgets.Carousel", [_WidgetBase, _TemplatedMixin, _Container], {
+        var Carousel = declare("bil.widgets.Carousel", [_WidgetBase, _TemplatedMixin, _Container], {
             
             templateString: Template,
             children: [],
