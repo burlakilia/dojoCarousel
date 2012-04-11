@@ -1,5 +1,7 @@
 Dojo Carousel Widget
 =============
+This is a very simple widget carousel, the carousel that allows you to organize all of the widgets. This widget is fully implements the interface 'dojo/_Container', which will quickly and easily add or delete new widgets to the carousel.
+
 Mixin: 
 -------------
 	
@@ -20,9 +22,8 @@ Javascript :
 
 	<script type="text/javascript">
 		require(["dojo/ready",
-				         'dojo/parser', 
-				         "dojogp/views/applicant/search/ShortVacancySummary",
-				         "dojogp/widgets/Carousel",
+				         'dojo/parser',
+				         "bil/widgets/Carousel",
 				         "dijit/form/Button",
 				         "dijit/layout/ContentPane"], function(ready, parser, ShortVacancySummary, Carousel, Button, ContentPane) {
 				         
