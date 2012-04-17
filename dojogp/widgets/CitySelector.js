@@ -38,10 +38,10 @@ define(["dojo/_base/declare",
         }
     });
 
-    var BaseWidget = declare("dojogp.widgets.CitySelector", [_WidgetBase, _TemplatedMixin], {
-        
-        templateString: TemplateString,
-        
+    var BaseWidget = declare("dojogp.widgets.CitySelector", [_WidgetBase, _TemplatedMixin, _FormWidgetMixin], {
+  
+	templateString: TemplateString,
+
         _countryWidget: null,
         _cityWidget: null,
         
