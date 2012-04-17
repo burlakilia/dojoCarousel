@@ -33,7 +33,7 @@ define(["dojo/_base/declare",
             postCreate: function () {
                 this.inherited(arguments);
                 var self = this;
-                
+
                 // отрисовываем все дочерние виджеты
                 dojo.forEach(this.children, function(widget) {
                     self.addChild(widget);
@@ -46,7 +46,7 @@ define(["dojo/_base/declare",
             startup: function() {
                 this.inherited(arguments);
                 var self = this;
-                
+
                 // получаем реальный размер дочернего виджета, после рендеринга
                 var children = query(".dojogpCarouselChildren")[0];
                 if (children != undefined) {

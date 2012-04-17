@@ -1,0 +1,10 @@
+.dojogpCitySelector {
+    padding: 5px;
+}
+
+.dojogpCitySelector .countrySelector,
+.dojogpCitySelector .citySelector{
+    padding: 5px;
+}
+
+
