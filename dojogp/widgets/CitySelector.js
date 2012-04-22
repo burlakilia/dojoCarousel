@@ -65,7 +65,7 @@ define(["dojo/_base/declare",
             this._countryWidget = new _CountrySelectorWidget({
                 store: this.countryStore,
                 autoComplete: this.autoComplete,
-                cityWidget: this._cityWidget,
+                cityWidget: this._cityWidget
             }, this.countrySelectorHolder);
             
             

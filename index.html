@@ -26,7 +26,9 @@ and open the template in the editor.
           require(["dojo/ready",
                      'dojo/parser',
                      "dojo/store/Memory",
-                     "dojogp/widgets/CitySelector" ], function(ready, parser, Memory, CitySelector) {
+                     "dojogp/widgets/CitySelector",
+                     "dojogp/views/applicant/placement/EditFreelanceVacancy"], function(ready, parser, Memory, CitySelector, EditFreelanceVacancy) {
+                     
 
                      ready(function() {
                         var _countryStore = new Memory({data: [
@@ -55,20 +57,92 @@ and open the template in the editor.
                                 },
                         ]});
                         
-                        citySelector = new CitySelector({
+                        var _freelanceWorkTypeStore = new Memory({data: [
+                                {
+                                        "id": 1, 
+                                        "name": "Разовый проект"
+                                },
+                                {
+                                        "id": 2, 
+                                        "name": "На постоянной основе"
+                                }
+                        ]});
+                        
+                        var _segmentStore =  new Memory({data: [
+                                {
+                                        "id": 1,
+                                        "name": "IT"
+                                },
+                                {
+                                        "id": 2,
+                                        "name": "PR & Media"
+                                }
+                        ]});
+                        
+                        var _positionStore =  new Memory({data: [
+                            {
+                                    "id": 1,
+                                    "segmentId": 1,
+                                    "title": "Прикладной программист"
+                            },
+                            {
+                                    "id": 2,
+                                    "segmentId": 1,
+                                    "title": "Системный программист"
+                            },
+                            {
+                                    "id": 3,
+                                    "segmentId": 1,
+                                    "title": "Веб-программист"
+                            },
+                            {
+                                    "id": 4,
+                                    "segmentId": 2,
+                                    "title": "Главный пиарщик"
+                            }
+                        ]}); 
+                        
+                        
+                        var _currencyStore = new Memory({data: [
+                            {
+                                    "id" : 1,
+                                    "shortName" : "р.",
+                                    "fullName" : "Российский Рубль"
+                            },
+                            {
+                                    "id" : 2,
+                                    "shortName" : "USD",
+                                    "fullName" : "Доллар США"
+                            }
+                        ]});
+                        
+                        /*citySelector = new CitySelector({
                             countryStore: _countryStore,
                             cityStore: _cityStore
-                        }, "citySelector");
+                        }, "citySelector");*/
                         //citySelector.startup();
+                        
+                        editFreelance = new EditFreelanceVacancy({
+                            freelanceWorkTypeStore: _freelanceWorkTypeStore,
+                            segmentStore: _segmentStore,
+                            positionStore: _positionStore,
+                            currencyStore: _currencyStore,
+                            countryStore: _countryStore,
+                            cityStore: _cityStore
+                        }, "editFreelance");
+                        
+                        editFreelance.startup();
                     });
             })
             
         </script>
         <style>
             @import url('dojogp/widgets/resources/CitySelector.css');
+            @import url('dojogp/views/applicant/placement/resources/EditFreelanceVacancy.css');
         </style>
     </head>
     <body class="tundra">
         <div id="citySelector"></div>
+        <div id="editFreelance"></div>
     </body>
 </html>

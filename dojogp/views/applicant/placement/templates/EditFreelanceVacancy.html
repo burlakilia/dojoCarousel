@@ -1,0 +1,85 @@
+<form class="dojogpEditFreelnace" data-dojo-attach-point='containerNode' data-dojo-attach-event='onreset:_onReset,onsubmit:_onSubmit' ${!nameAttrSetting}>
+    <div class="dojogpHeader">Ответьте всего на пару вопросов для того, чтобы<br/>сформировать вашу будущею команду</div>
+    <table class="dojogpEditFreelnaceTable">
+        <tr>
+            <td class="name">Название</td>
+            <td class="value" colspan="3">
+                <input  data-dojo-type="dijit.form.ValidationTextBox" 
+                        data-dojo-props="name: 'workName', required: true"
+                        data-dojo-attach-point="nameWidget"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">Тип работы</td>
+            <td class="value" colspan="3">
+                <input  data-dojo-type="dijit.form.FilteringSelect" 
+                        data-dojo-props="name: 'workType', required: true"
+                        data-dojo-attach-point="workTypeWidget"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">Срок работы от</td>
+            <td class="value">
+                <input  data-dojo-type="dijit.form.DateTextBox" 
+                        data-dojo-props="name: 'dateStart'"
+                        data-dojo-attach-point="dateStartWidget"/>
+            </td>
+            <td class="name">до</td>
+            <td class="value">
+                <input  data-dojo-type="dijit.form.DateTextBox" 
+                        data-dojo-props="name: 'dateEnd'"
+                        data-dojo-attach-point="dateEndWidget"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">Сегмент</td>
+            <td class="value">
+                <input  data-dojo-type="dijit.form.FilteringSelect" 
+                        data-dojo-props="name: 'segment', searchAttr: 'name', required: true"
+                        data-dojo-attach-point="segmentWidget"/>
+            </td>
+            <td class="name">Должность</td>
+            <td class="value">
+                <input  data-dojo-type="dijit.form.FilteringSelect" 
+                        data-dojo-props="name: 'position', searchAttr: 'title', required: true"
+                        data-dojo-attach-point="positionWidget"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">Оклад от</td>
+            <td class="value">
+                <input  data-dojo-attach-point="moneyFromHolder"/>
+            </td>
+            <td class="name">до</td>
+            <td class="value">
+                <input  data-dojo-attach-point="moneyToHolder"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">Город</td>
+            <td class="value" colspan="3">
+                <div data-dojo-attach-point="citySelectorHolder"><div>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">Возраст</td>
+            <td class="value" colspan="3">
+                <input  data-dojo-type="dijit.form.NumberTextBox" 
+                        data-dojo-props="name: 'age'"
+                        data-dojo-attach-point="ageWidget"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">Обязанности</td>
+            <td class="value" colspan="3">
+                <div  data-dojo-attach-point="responsibilityHolder"></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">Необходимый опыт</td>
+            <td class="value" colspan="3">
+                <div  data-dojo-attach-point="experienceHolder"></div>
+            </td>
+        </tr>
+    </table>
+</form>
