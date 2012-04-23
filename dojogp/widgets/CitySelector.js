@@ -17,9 +17,16 @@ define(["dojo/_base/declare",
         cityWidget: null, // ссылка на виджет выбора города
         
         onChange: function(country) {
-            this.inherited(arguments);
+            // if is not model data, need to first load
+            if (this.isModelData) {
+                this.isModelData = false
+            } else {
+                this.cityWidget.reset();
+            }
+            
             this.cityWidget.query = {"countryId": country};
-            this.cityWidget.reset();
+            this.cityWidget.startup();
+            this.inherited(arguments);
         }
         
     });
@@ -71,6 +78,20 @@ define(["dojo/_base/declare",
             
             this._countryWidget.startup();
             this._cityWidget.startup();
+        },
+        
+        set: function(attr, value) {
+            if (attr == 'value') {
+                // получаем значения города по этому значению
+                var retVal = this.cityStore.query({"id": value});
+                if (retVal != undefined && retVal.length > 0) {
+                    this._countryWidget.isModelData = true;
+                    this._countryWidget.set("value", retVal[0].countryId);
+                    this._cityWidget.set("value", retVal[0].id);
+                }
+            }
+            
+            this.inherited(arguments);
         }
         
     })    

@@ -15,12 +15,15 @@ define(["dojo/_base/declare",
         "dojogp/store/MoneyInput",
         "dojogp/widgets/CitySelector",
         "dijit/Editor",
-    "dijit/_editor/plugins/AlwaysShowToolbar"], function(declare, template, _WidgetBase, 
+        "dijit/_editor/plugins/AlwaysShowToolbar", 
+        "dijit/form/Button"], function(declare, template, _WidgetBase, 
     _TemplatedMixin, _WidgetsInTemplateMixin, _View, 
-    Form, ValidationTextBox, FilteringSelect, DateTextBox, MoneyInput, CitySelector, Editor, AlwaysShowToolbar) {
-        
+    Form, ValidationTextBox, FilteringSelect, DateTextBox, MoneyInput, CitySelector, Editor, AlwaysShowToolbar, Button) {
+
    var BaseForm = declare("dojogp.views.applicant.placement.EditFreelanceVacancy", [Form, _TemplatedMixin, _WidgetsInTemplateMixin], {
-       
+       encType: "multipart/form-data",
+       action: "/dojoCarousel",
+       method: "POST",
        templateString: template,
        widgetsInTemplate: true,
        
@@ -34,7 +37,7 @@ define(["dojo/_base/declare",
        
        startup: function() {
             this.inherited(arguments);
-            
+
             // create advanced widgets
             this.workTypeWidget.store = this.freelanceWorkTypeStore;
             this.segmentWidget.store = this.segmentStore;
@@ -43,38 +46,42 @@ define(["dojo/_base/declare",
             var self = this;
             
             this.segmentWidget.onChange = function(segment) {
+                if (this.isModelData) {
+                    this.isModelData = false
+                } else {
+                    self.positionWidget.reset();
+                }
                 self.positionWidget.query = {"segmentId": segment};
-                self.positionWidget.reset();
             }
             
             this.positionWidget.store = this.positionStore;
             this.moneyFromWidget = new MoneyInput({
-                            name: "moneyFrom",
-                            curencyStore: this.currencyStore
+                name: "minSalary",
+                curencyStore: this.currencyStore
             }, this.moneyFromHolder);
             
             this.moneyFromWidget.startup();
             
             this.positionWidget.store = this.positionStore;
             this.moneyToWidget = new MoneyInput({
-                            name: "moneyTo",
-                            curencyStore: this.currencyStore
+                name: "maxSalary",
+                curencyStore: this.currencyStore
             }, this.moneyToHolder);
             
             this.moneyToWidget.startup();
             
             this.citySelectorWidget = new CitySelector({
-                            name: "city",
-                            countryStore: this.countryStore,
-                            cityStore: this.cityStore
+                name: "cityId",
+                countryStore: this.countryStore,
+                cityStore: this.cityStore
             }, this.citySelectorHolder);
             
             this.citySelectorWidget.startup();
             
             this.responsibilityWidget = new Editor({
-                name: 'responsibility',
+                name: 'responsibilities',
                 height: '',
-                style: "width: 400px; height: 150px",
+                style: "width: 100%; height: 150px",
                 extraPlugins: [AlwaysShowToolbar]
             }, this.responsibilityHolder);
             this.responsibilityWidget.startup();
@@ -82,11 +89,49 @@ define(["dojo/_base/declare",
             this.experienceWidget = new Editor({
                 name: 'experience',
                 height: '',
-                style: "width: 400px; height: 150px",
+                style: "width: 100%; height: 150px",
                 extraPlugins: [AlwaysShowToolbar]
             }, this.experienceHolder);
             this.experienceWidget.startup();
             
+            this.submitButton = new Button({
+                label: "Сохранить",
+                onClick: function() {
+                    self.submit(); 
+                }
+            }, this.submitButtonHolder);
+            
+            // check and represent model 
+            if (this.model != undefined) {
+                this._initModel();
+            }
+        },
+        
+        /**
+         * Метод установки модели
+         */
+        _initModel: function() {
+            var self = this;
+            this.segmentWidget.isModelData = true;
+            
+            dojo.forEach(this.getChildren(), function(widget) {
+                if( self.model[widget.name] != undefined) {
+                    widget.set('value', self.model[widget.name]);
+                }
+            });
+            
+            // устанавливаем даты
+            this.dateStartWidget.set("value", new Date(this.model["workingPeriod"]["begin"]));
+            this.dateEndWidget.set("value", new Date(this.model["workingPeriod"]["end"]));
+        },
+        
+        submit: function() {
+            if (this.validate()) {
+                this.inherited(arguments);
+            } else {
+                alert("Не все поля заполнены!");
+            }
+
         }
        
    });

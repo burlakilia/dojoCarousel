@@ -38,6 +38,15 @@ define(["dojo/_base/declare",
                 };
                 
                 this.curencyWidget.startup();
+            },
+            
+            set: function(attr, value) {
+                if (attr == 'value') {
+                    this.curencyWidget.set('value', value.currencyId);
+                    this.moneyWidget.set('value', value.amount);
+                }
+
+                this.inherited(arguments);
             }
             
         });

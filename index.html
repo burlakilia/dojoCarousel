@@ -23,6 +23,35 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/resources/dojo.css"> 
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/tundra/tundra.css">
         <script type="text/javascript">
+         var _model =   {
+                "_id" : "2", // Скрытое поле. Если _id не передан, то оставить значение null
+                "type" : "freelance", // константа
+                "cityId" : "1", // ID города
+                "positionId" : "2", // Должность
+                "experience" : "Нужен человек с опытом Perl от 3 лет", // Опыт
+                "freelanceWorkTypeId" : "1", // Тип работы
+                "maxAge" : 40,
+                "minAge" : 25,
+                "maxSalary" : {
+                        "amount" : 60000,
+                        "currencyId" : 2
+                },
+                "minSalary" : {
+                        "amount" : 40000,
+                        "currencyId" : 1
+                },
+                "name" : "Программист Perl", // Название вакансии
+                "responsibilities" : "Написание и отладка SQL-кода", // Обязанности
+                "segmentId" : 1, // Сегмент
+                "workingPeriod" : { // Срок работы
+                        "begin" : "2012-05-15",
+                        "end" : "2012-05-31"
+                }
+        }
+            
+        </script>
+        
+        <script type="text/javascript">
           require(["dojo/ready",
                      'dojo/parser',
                      "dojo/store/Memory",
@@ -123,6 +152,7 @@ and open the template in the editor.
                         //citySelector.startup();
                         
                         editFreelance = new EditFreelanceVacancy({
+                            model: _model,
                             freelanceWorkTypeStore: _freelanceWorkTypeStore,
                             segmentStore: _segmentStore,
                             positionStore: _positionStore,
