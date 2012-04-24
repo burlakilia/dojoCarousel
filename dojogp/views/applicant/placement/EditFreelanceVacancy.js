@@ -6,6 +6,7 @@ define(["dojo/_base/declare",
         "dojo/text!./templates/EditFreelanceVacancy.html",
         "dijit/_WidgetBase",
         "dijit/_TemplatedMixin",
+        "dojo/Evented",
         "dijit/_WidgetsInTemplateMixin",
         "dojogp/mvc/_View",
         "dijit/form/Form",
@@ -17,10 +18,11 @@ define(["dojo/_base/declare",
         "dijit/Editor",
         "dijit/_editor/plugins/AlwaysShowToolbar", 
         "dijit/form/Button"], function(declare, template, _WidgetBase, 
-    _TemplatedMixin, _WidgetsInTemplateMixin, _View, 
+    _TemplatedMixin, Evented, _WidgetsInTemplateMixin, _View, 
     Form, ValidationTextBox, FilteringSelect, DateTextBox, MoneyInput, CitySelector, Editor, AlwaysShowToolbar, Button) {
 
-   var BaseForm = declare("dojogp.views.applicant.placement.EditFreelanceVacancy", [Form, _TemplatedMixin, _WidgetsInTemplateMixin], {
+   var BaseForm = declare("dojogp.views.applicant.placement.EditFreelanceVacancy", 
+   [Form, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
        encType: "multipart/form-data",
        action: "/dojoCarousel",
        method: "POST",
@@ -127,11 +129,11 @@ define(["dojo/_base/declare",
         
         submit: function() {
             if (this.validate()) {
-                this.inherited(arguments);
+                //this.inherited(arguments);
+                this.emit("submit", {"data" : this.getValues() });
             } else {
-                alert("Не все поля заполнены!");
+                this.emit("validationError", {});
             }
-
         }
        
    });

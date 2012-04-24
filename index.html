@@ -162,6 +162,13 @@ and open the template in the editor.
                         }, "editFreelance");
                         
                         editFreelance.startup();
+                        editFreelance.on("submit", function(data){
+                            console.log(data);
+                        });
+                        
+                        editFreelance.on("validationError", function(){
+                            alert("Не все поля заполненны верно!");
+                        })
                     });
             })
             
